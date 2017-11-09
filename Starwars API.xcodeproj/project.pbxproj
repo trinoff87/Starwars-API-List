@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D15F8FF41FB3D790003035D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FF31FB3D790003035D7 /* AppDelegate.m */; };
-		D15F8FF71FB3D790003035D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FF61FB3D790003035D7 /* ViewController.m */; };
+		D15F8FF71FB3D790003035D7 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FF61FB3D790003035D7 /* Home.m */; };
 		D15F8FFA1FB3D790003035D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15F8FF81FB3D790003035D7 /* Main.storyboard */; };
 		D15F8FFD1FB3D790003035D7 /* Starwars_API.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FFB1FB3D790003035D7 /* Starwars_API.xcdatamodeld */; };
 		D15F8FFF1FB3D790003035D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D15F8FFE1FB3D790003035D7 /* Assets.xcassets */; };
@@ -20,8 +20,8 @@
 		D15F8FEF1FB3D790003035D7 /* Starwars API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Starwars API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15F8FF21FB3D790003035D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D15F8FF31FB3D790003035D7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D15F8FF51FB3D790003035D7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D15F8FF61FB3D790003035D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D15F8FF51FB3D790003035D7 /* Home.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		D15F8FF61FB3D790003035D7 /* Home.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
 		D15F8FF91FB3D790003035D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D15F8FFC1FB3D790003035D7 /* Starwars_API.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Starwars_API.xcdatamodel; sourceTree = "<group>"; };
 		D15F8FFE1FB3D790003035D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,10 +60,8 @@
 		D15F8FF11FB3D790003035D7 /* Starwars API */ = {
 			isa = PBXGroup;
 			children = (
-				D15F8FF21FB3D790003035D7 /* AppDelegate.h */,
-				D15F8FF31FB3D790003035D7 /* AppDelegate.m */,
-				D15F8FF51FB3D790003035D7 /* ViewController.h */,
-				D15F8FF61FB3D790003035D7 /* ViewController.m */,
+				D15F900C1FB3D79A003035D7 /* Main */,
+				D15F900B1FB3D796003035D7 /* Controllers */,
 				D15F8FF81FB3D790003035D7 /* Main.storyboard */,
 				D15F8FFE1FB3D790003035D7 /* Assets.xcassets */,
 				D15F90001FB3D790003035D7 /* LaunchScreen.storyboard */,
@@ -72,6 +70,24 @@
 				D15F8FFB1FB3D790003035D7 /* Starwars_API.xcdatamodeld */,
 			);
 			path = "Starwars API";
+			sourceTree = "<group>";
+		};
+		D15F900B1FB3D796003035D7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D15F8FF51FB3D790003035D7 /* Home.h */,
+				D15F8FF61FB3D790003035D7 /* Home.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D15F900C1FB3D79A003035D7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D15F8FF21FB3D790003035D7 /* AppDelegate.h */,
+				D15F8FF31FB3D790003035D7 /* AppDelegate.m */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D15F8FF71FB3D790003035D7 /* ViewController.m in Sources */,
+				D15F8FF71FB3D790003035D7 /* Home.m in Sources */,
 				D15F8FFD1FB3D790003035D7 /* Starwars_API.xcdatamodeld in Sources */,
 				D15F90051FB3D790003035D7 /* main.m in Sources */,
 				D15F8FF41FB3D790003035D7 /* AppDelegate.m in Sources */,
