@@ -10,7 +10,10 @@
 
 @interface Home ()
 @property (strong, nonatomic) NSMutableArray *people;
+
 @end
+
+int indexPerson = 0;
 
 @implementation Home
 
@@ -38,14 +41,28 @@
             [_people removeAllObjects];
             [_people addObjectsFromArray:people];
             
-            SWObject *person = [people objectAtIndex:0];
+            SWObject *person = [people objectAtIndex:indexPerson];
             NSString *name = person.name;
             
             NSLog(@"print name : %@", name);
+            self.lblName.text = name;
+            self.lblName.adjustsFontSizeToFitWidth = YES;
+            indexPerson++;
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }];
 }
+
+//********************************************************************************************
+#pragma mark                            Action methods
+//********************************************************************************************
+- (IBAction)btnUpdatePressed:(id)sender {
+    [self getPeople];
+}
+
+
+
+
 
 
 @end

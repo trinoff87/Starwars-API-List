@@ -11,6 +11,8 @@
 #import "Constants.h"
 
 @interface Home : UIViewController
+- (IBAction)btnUpdatePressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *lblName;
 
 
 @end
