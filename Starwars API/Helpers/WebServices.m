@@ -15,7 +15,6 @@
 //--------------------------------------------------------------------------------------------
 + (void)getPeople:(void (^)(NSMutableArray<SWObject> *people)) handler{
     
-    
     //init data dictionary
     NSMutableDictionary *diData = [[NSMutableDictionary alloc]init];
     
@@ -33,6 +32,71 @@
         NSString *strData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         NSURLSession *session = [self getSession];
         NSMutableURLRequest * request = [self getRequest:[nURLStarwarsAPI stringByAppendingString:nURLStarwarsPeople] forData:strData];
+        
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            if(data!=nil){
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                NSLog(@"response received %@",jsonResponse);
+                
+                if(jsonResponse!=nil){
+                    
+                    int responseCode = [jsonResponse[@"response_code"] intValue];
+                    
+                    if(1){
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            @try {
+                                NSError *err = nil;
+                                NSMutableArray<SWObject>  *people = (NSMutableArray<SWObject> *)[SWObject arrayOfModelsFromDictionaries:[jsonResponse objectForKey:@"results"] error:&err];
+                                handler(people);
+                            }
+                            @catch (NSException *exception) {
+                                handler(nil);
+                            }
+                        });
+                    }else{
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            handler(nil);
+                        });
+                    }
+                }else{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        handler(nil);
+                    });
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(nil);
+                });
+            }
+        }] resume];
+    }
+}
+//--------------------------------------------------------------------------------------------
++ (void)getPerson:(NSString*)personID completion:(void (^)(NSMutableArray<SWObject> *people)) handler{
+    
+    //init data dictionary
+    NSMutableDictionary *diData = [[NSMutableDictionary alloc]init];
+    
+    //    //add parameters to dictionary
+    //    [diData setValue:strTimestamp   forKey:@"timestamp"];
+    //    [diData setValue:nBMPublicKey   forKey:@"public_key"];
+    
+    //convert to json string
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:diData options:0 error:&error];
+    
+    if (!jsonData) {
+        //Deal with error
+    } else {
+        NSString *strData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSURLSession *session = [self getSession];
+        NSString *urlPersonID = [nURLStarwarsPeople stringByAppendingString:personID];
+        NSMutableURLRequest * request = [self getRequest:[nURLStarwarsAPI stringByAppendingString:urlPersonID] forData:strData];
         
         [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             

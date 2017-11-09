@@ -22,6 +22,7 @@ int indexPerson = 0;
     // Do any additional setup after loading the view, typically from a nib.
     _people = [[NSMutableArray alloc] init];
     [self getPeople];
+    [self getPerson];
 }
 
 
@@ -48,6 +49,21 @@ int indexPerson = 0;
             self.lblName.text = name;
             self.lblName.adjustsFontSizeToFitWidth = YES;
             indexPerson++;
+        }
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
+}
+- (void)getPerson{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [WebServices getPerson:@"1" completion:^(NSMutableArray<SWObject> *people) {
+        
+        if(people){
+            [_people removeAllObjects];
+            [_people addObjectsFromArray:people];
+            
+            SWObject *person = [people objectAtIndex:indexPerson];
+            NSString *name = person.name;
+            
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }];
