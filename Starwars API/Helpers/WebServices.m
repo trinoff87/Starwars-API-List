@@ -13,7 +13,7 @@
 
 @implementation WebServices
 //--------------------------------------------------------------------------------------------
-+ (void)getPeople:(void (^)(NSMutableArray<SWObject> *teams)) handler{
++ (void)getPeople:(void (^)(NSMutableArray<SWObject> *people)) handler{
     
     
     //init data dictionary
@@ -44,13 +44,13 @@
                     
                     int responseCode = [jsonResponse[@"response_code"] intValue];
                     
-                    if(responseCode==nResponseCodeOK){
+                    if(1){
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
                             
                             @try {
                                 NSError *err = nil;
-                                NSMutableArray<SWObject>  *people = (NSMutableArray<SWObject> *)[SWObject arrayOfModelsFromDictionaries:[jsonResponse objectForKey:@"object"] error:&err];
+                                NSMutableArray<SWObject>  *people = (NSMutableArray<SWObject> *)[SWObject arrayOfModelsFromDictionaries:[jsonResponse objectForKey:@"results"] error:&err];
                                 handler(people);
                             }
                             @catch (NSException *exception) {
@@ -91,13 +91,13 @@
     if(data){
         
         NSString * tempData = data;
-        NSString *post = [[NSString alloc] initWithFormat:@"data=%@", tempData];
+        NSString *post = @"";//[[NSString alloc] initWithFormat:@"data=%@", tempData];
         NSLog(@"post parameters: %@",post);
         post = [post stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
         NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
         [request setURL:httpUrl];
-        [request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:@"GET"];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:[@"Write your user agent name " stringByAppendingString:version] forHTTPHeaderField:@"User-Agent"];
