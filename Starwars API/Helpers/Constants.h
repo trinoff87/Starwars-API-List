@@ -1,17 +1,14 @@
 //
-//  ViewController.h
+//  Constants.h
 //  Starwars API
 //
 //  Created by Walter Gonzalez Domenzain on 08/11/17.
 //  Copyright © 2017 Boletomovil. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "WebServices.h"
-#import "Constants.h"
+#ifndef Constants_h
+#define Constants_h
 
-@interface Home : UIViewController
+#define nURLStarwarsAPI @"https://swapi.co/api/"
 
-
-@end
-
+#endif /* Constants_h */
