@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D902CAE1FBBD83D00C96A24 /* CellMainTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D902CAC1FBBD83D00C96A24 /* CellMainTable.m */; };
+		7D902CAF1FBBD83D00C96A24 /* CellMainTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D902CAD1FBBD83D00C96A24 /* CellMainTable.xib */; };
+		7D902CB21FBBD8A100C96A24 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D902CB11FBBD8A100C96A24 /* ListViewController.m */; };
 		D15F8FF41FB3D790003035D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FF31FB3D790003035D7 /* AppDelegate.m */; };
 		D15F8FF71FB3D790003035D7 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F8FF61FB3D790003035D7 /* Home.m */; };
 		D15F8FFA1FB3D790003035D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15F8FF81FB3D790003035D7 /* Main.storyboard */; };
@@ -23,6 +26,11 @@
 
 /* Begin PBXFileReference section */
 		6006D3A1B6A4E35C6056006B /* Pods-Starwars API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starwars API.release.xcconfig"; path = "Pods/Target Support Files/Pods-Starwars API/Pods-Starwars API.release.xcconfig"; sourceTree = "<group>"; };
+		7D902CAB1FBBD83D00C96A24 /* CellMainTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellMainTable.h; sourceTree = "<group>"; };
+		7D902CAC1FBBD83D00C96A24 /* CellMainTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellMainTable.m; sourceTree = "<group>"; };
+		7D902CAD1FBBD83D00C96A24 /* CellMainTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellMainTable.xib; sourceTree = "<group>"; };
+		7D902CB01FBBD8A100C96A24 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		7D902CB11FBBD8A100C96A24 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		8083ADB0DC8598602DB2EDBF /* libPods-Starwars API.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Starwars API.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15F8FEF1FB3D790003035D7 /* Starwars API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Starwars API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15F8FF21FB3D790003035D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D902CAA1FBBD80B00C96A24 /* cellMainTable */ = {
+			isa = PBXGroup;
+			children = (
+				7D902CAB1FBBD83D00C96A24 /* CellMainTable.h */,
+				7D902CAC1FBBD83D00C96A24 /* CellMainTable.m */,
+				7D902CAD1FBBD83D00C96A24 /* CellMainTable.xib */,
+			);
+			path = cellMainTable;
+			sourceTree = "<group>";
+		};
 		99F6F0DD17E9904E0E92C224 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +115,7 @@
 		D15F8FF11FB3D790003035D7 /* Starwars API */ = {
 			isa = PBXGroup;
 			children = (
+				7D902CAA1FBBD80B00C96A24 /* cellMainTable */,
 				D15F900C1FB3D79A003035D7 /* Main */,
 				D15F900F1FB3D8DE003035D7 /* Helpers */,
 				D15F90171FB3D954003035D7 /* Models */,
@@ -116,6 +135,8 @@
 			children = (
 				D15F8FF51FB3D790003035D7 /* Home.h */,
 				D15F8FF61FB3D790003035D7 /* Home.m */,
+				7D902CB01FBBD8A100C96A24 /* ListViewController.h */,
+				7D902CB11FBBD8A100C96A24 /* ListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D902CAF1FBBD83D00C96A24 /* CellMainTable.xib in Resources */,
 				D15F90021FB3D790003035D7 /* LaunchScreen.storyboard in Resources */,
 				D15F8FFF1FB3D790003035D7 /* Assets.xcassets in Resources */,
 				D15F900E1FB3D810003035D7 /* Podfile in Resources */,
@@ -276,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D902CB21FBBD8A100C96A24 /* ListViewController.m in Sources */,
 				D15F8FF71FB3D790003035D7 /* Home.m in Sources */,
 				D15F8FFD1FB3D790003035D7 /* Starwars_API.xcdatamodeld in Sources */,
 				D15F90051FB3D790003035D7 /* main.m in Sources */,
@@ -283,6 +306,7 @@
 				D15F90151FB3D927003035D7 /* WebServices.m in Sources */,
 				D15F90121FB3D90B003035D7 /* Declarations.m in Sources */,
 				D15F901A1FB3DB86003035D7 /* SWObject.m in Sources */,
+				7D902CAE1FBBD83D00C96A24 /* CellMainTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
