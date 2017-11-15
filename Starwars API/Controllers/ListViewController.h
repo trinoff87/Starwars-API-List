@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServices.h"
 
 @interface ListViewController : UIViewController
 
