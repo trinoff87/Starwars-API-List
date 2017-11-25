@@ -14,12 +14,16 @@
 @property NSMutableArray *charNumbers;
 @property NSString *selectedName;
 @property NSString *selectedNumber;
+@property (strong, nonatomic) NSMutableArray *people;
 @end
+
+int indexCharacter = 0;
 
 @implementation ListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _people = [[NSMutableArray alloc] init];
     [self initController];
     // Do any additional setup after loading the view.
 }
@@ -32,6 +36,36 @@
 - (void)initController {
     self.charNames = [NSMutableArray new];
     self.charNumbers = [NSMutableArray new];
+    [self getPeople];
+    /*self.charNames  = [[NSMutableArray alloc] initWithObjects: @"Tyrion Lannister", @"Daenerys Targaryen", @"Jon Snow", @"Arya Stark", @"Cersei Lannister", nil];
+    
+    self.charNumbers  = [[NSMutableArray alloc] initWithObjects: @"1", @"2", @"3", @"4", @"5", nil];*/
+}
+
+//********************************************************************************************
+#pragma mark                            Data methods
+//********************************************************************************************
+- (void)getPeople{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [WebServices getPeople:^(NSMutableArray<SWObject> *people) {
+        
+        if(people){
+            [_people removeAllObjects];
+            [_people addObjectsFromArray:people];
+            for(id obj in people){
+                SWObject *person = (SWObject*)obj;
+                NSString *name = person.name;
+                NSLog(@"print name : %@", name);
+                [self.charNames addObject: person.name];
+                [self.charNumbers addObject: [NSString stringWithFormat:@"%d", indexCharacter]];
+                indexCharacter++;
+                [self.tblMain reloadData];
+            }
+            [self.charNames addObject: nil];
+            [self.charNumbers addObject: nil];
+        }
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
 }
 
 /**********************************************************************************************/
@@ -59,7 +93,7 @@
     }
     //Fill cell with info from arrays
     cell.lblCharName.text = self.charNames[indexPath.row];
-    cell.lblCharNumber = self.charNumbers[indexPath.row];
+    cell.lblCharNumber.text = self.charNumbers[indexPath.row];
     
     return cell;
 }

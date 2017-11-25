@@ -28,6 +28,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tblMain" destination="G6e-dt-cAK" id="cYr-QV-EcE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkO-yQ-1uF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
