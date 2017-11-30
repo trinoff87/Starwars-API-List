@@ -8,11 +8,12 @@
 
 #import "ListViewController.h"
 #import "CellMainTable.h"
+#import "DetailController.h"
 
 @interface ListViewController ()
 @property NSMutableArray *charNames;
 @property NSMutableArray *charNumbers;
-@property NSString *selectedName;
+@property SWObject *selectedPerson;
 @property NSString *selectedNumber;
 @property (strong, nonatomic) NSMutableArray *people;
 @end
@@ -37,9 +38,6 @@ int indexCharacter = 0;
     self.charNames = [NSMutableArray new];
     self.charNumbers = [NSMutableArray new];
     [self getPeople];
-    /*self.charNames  = [[NSMutableArray alloc] initWithObjects: @"Tyrion Lannister", @"Daenerys Targaryen", @"Jon Snow", @"Arya Stark", @"Cersei Lannister", nil];
-    
-    self.charNumbers  = [[NSMutableArray alloc] initWithObjects: @"1", @"2", @"3", @"4", @"5", nil];*/
 }
 
 //********************************************************************************************
@@ -60,9 +58,11 @@ int indexCharacter = 0;
                 [self.charNumbers addObject: [NSString stringWithFormat:@"%d", indexCharacter]];
                 indexCharacter++;
                 [self.tblMain reloadData];
+                [_people addObject:people];
             }
             [self.charNames addObject: nil];
             [self.charNumbers addObject: nil];
+            [_people addObject:nil];
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }];
@@ -99,17 +99,14 @@ int indexCharacter = 0;
 }
 //-------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedName = self.charNames[indexPath.row];
-    self.selectedNumber =  self.charNumbers[indexPath.row];
+    self.selectedPerson = _people[indexPath.row];
     [self performSegueWithIdentifier:@"segueID" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //TODO Pass over to home.m
-    //CharacterDetail *detailController = segue.destinationViewController;
-    //detailController.age = self.selectedAge;
-    //detailController.image = self.selectedImg;
+    DetailController *detailController = segue.destinationViewController;
+    detailController.character = self.selectedPerson;
 }
 
 @end
